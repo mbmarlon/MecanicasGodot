@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://oh8lxvvsmxeh"]
+
+[ext_resource type="PackedScene" uid="uid://ct4fw8rce8kse" path="res://assets/1/suelo collider.tscn" id="2_n8qyd"]
+[ext_resource type="PackedScene" uid="uid://de0xpot56eucn" path="res://Escenas/Player.tscn" id="2_sg7v6"]
+[ext_resource type="Script" path="res://code/Player.gd" id="3_3hfb2"]
+
+[node name="Escenario 1" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.240094, 0.969106, -0.0564674, -0.499572, 0.173224, 0.848776, 0.832335, -0.175577, 0.525729, 0, 21.54, 0)
+shadow_enabled = true
+
+[node name="suelo2" parent="." instance=ExtResource("2_n8qyd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_sg7v6")]
+script = ExtResource("3_3hfb2")

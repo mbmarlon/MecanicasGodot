@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://de0xpot56eucn"]
+
+[ext_resource type="Script" path="res://code/Player.gd" id="1_ubxjp"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gfaci"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8fpey"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cd651"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_ubxjp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
+mesh = SubResource("CapsuleMesh_gfaci")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.5, 0, 0, 0, 0.51, 0, 0, 0, 0.5, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_8fpey")
+
+[node name="Pivote" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Pivote"]
+transform = Transform3D(0.707107, -0.247634, 0.662327, 0, 0.936672, 0.350207, -0.707107, -0.247634, 0.662327, 4, 4, 4)
+doppler_tracking = 2
+current = true
+
+[node name="WeapointHolder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.224485, 0.643, 0.357)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WeapointHolder"]
+transform = Transform3D(0.0707107, 0.212132, 0, -0.0707107, 0.212132, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_cd651")
+
+[node name="AttackRayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+target_position = Vector3(0, 0, 1.5)
